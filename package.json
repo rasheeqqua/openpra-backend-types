@@ -1,8 +1,16 @@
 {
   "name": "typescript-starter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rasheeqqua/openpra-backend-types.git"
+  },
   "version": "1.0.0",
-  "description": "A basic typescript app starter for 2023.",
-  "main": "index.js",
+  "description": "Primitive data-types for OPENPRA web-backend app",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
