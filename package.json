@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/rasheeqqua/openpra-backend-types.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Primitive data-types for OPENPRA web-backend app",
   "main": "build/index.js",
   "types": "build/index.d.ts",
