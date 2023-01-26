@@ -7,7 +7,7 @@ export declare enum TreeTypes {
     MANAGEMENT_FAULT_TREE = "m",
     INITIATING_EVENT = "i"
 }
-export interface basic_event {
+export interface fault_tree {
     tree_type: TreeTypes;
     tree_data: FaultTreeMxGraphJSON;
 }
