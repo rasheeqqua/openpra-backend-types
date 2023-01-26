@@ -1,0 +1,55 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GateTypes = exports.ROLE_CHOICES = exports.ProxyTypes = exports.ReferenceTypes = void 0;
+var ReferenceTypes;
+(function (ReferenceTypes) {
+    ReferenceTypes["GATES"] = "gates";
+    ReferenceTypes["BASIC_EVENTS"] = "basic_events";
+    ReferenceTypes["HOUSE_EVENTS"] = "house_events";
+    ReferenceTypes["FUNCTIONAL_EVENT"] = "functional_event";
+    ReferenceTypes["PATHS"] = "paths";
+    ReferenceTypes["BRANCHES"] = "branches";
+    ReferenceTypes["FUNCTIONAL_EVENTS"] = "functional_events";
+    ReferenceTypes["INITIAL_STATE"] = "initial_state";
+    ReferenceTypes["SEQUENCES"] = "sequences";
+    ReferenceTypes["BAYESIAN_NODES"] = "bayesian_nodes";
+    ReferenceTypes["STATES"] = "states";
+})(ReferenceTypes = exports.ReferenceTypes || (exports.ReferenceTypes = {}));
+var ProxyTypes;
+(function (ProxyTypes) {
+    ProxyTypes["COLLECT_FORMULA"] = "CollectFormula";
+    ProxyTypes["COLLECT_EXPRESSION"] = "CollectExpression";
+    ProxyTypes["EVENT_REFERENCE"] = "EventReference";
+    ProxyTypes["LOGICAL_EXPRESSION"] = "LogicalExpression";
+    ProxyTypes["FLOAT"] = "Float";
+    ProxyTypes["STRING_DISTRIBUTION"] = "StringDistribution";
+    ProxyTypes["EXPONENTIAL_DISTRIBUTION"] = "ExponentialDistribution";
+    ProxyTypes["LOG_NORMAL_DISTRIBUTION"] = "LognormalDistribution";
+    ProxyTypes["WEIBULL_DISTRIBUTION"] = "WeibullDistribution";
+    ProxyTypes["NORMAL_DISTRIBUTION"] = "NormalDistribution";
+    ProxyTypes["UNIFORM_DISTRIBUTION"] = "UniformDistribution";
+    ProxyTypes["NON_PARAMETRIC_DISTRIBUTION"] = "NonParametricDistribution";
+    ProxyTypes["FORK"] = "Fork";
+    ProxyTypes["END_STATE"] = "EndState";
+    ProxyTypes["BBN_LINK_EXPRESSION"] = "BBNLinkExpression";
+    ProxyTypes["PARTS_FIT_EXPRESSION"] = "PartsFITExpression";
+    ProxyTypes["DISTRIBUTION"] = "Distribution";
+})(ProxyTypes = exports.ProxyTypes || (exports.ProxyTypes = {}));
+var ROLE_CHOICES;
+(function (ROLE_CHOICES) {
+    ROLE_CHOICES["PUBLIC"] = "public";
+    ROLE_CHOICES["PRIVATE"] = "private";
+})(ROLE_CHOICES = exports.ROLE_CHOICES || (exports.ROLE_CHOICES = {}));
+var GateTypes;
+(function (GateTypes) {
+    GateTypes["AND"] = "and";
+    GateTypes["AT_LEAST"] = "atleast";
+    GateTypes["CARDINALITY"] = "cardinality";
+    GateTypes["IFF"] = "iff";
+    GateTypes["IMPLY"] = "imply";
+    GateTypes["NAND"] = "nand";
+    GateTypes["NOR"] = "nor";
+    GateTypes["NOT"] = "not";
+    GateTypes["OR"] = "or";
+    GateTypes["XOR"] = "xor";
+})(GateTypes = exports.GateTypes || (exports.GateTypes = {}));

@@ -1,3 +1,4 @@
+import { FaultTreeMxGraphJSON } from "./fault_tree";
 export declare enum TreeTypes {
     EVENT_TREE = "e",
     EVENT_SEQUENCE_DIAGRAM = "e",
@@ -6,14 +7,7 @@ export declare enum TreeTypes {
     MANAGEMENT_FAULT_TREE = "m",
     INITIATING_EVENT = "i"
 }
-export interface TreeProps {
-    id: number;
-    title: string;
-    date_created: string;
-    date_modified: string;
-    creator: number;
-    description: string;
-    assigned_users: number[];
-    valid: boolean;
+export interface basic_event {
     tree_type: TreeTypes;
+    tree_data: FaultTreeMxGraphJSON;
 }
