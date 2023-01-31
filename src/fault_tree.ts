@@ -1,137 +1,87 @@
-export enum ReferenceTypes {
-    GATES = "gates",
-    BASIC_EVENTS = "basic_events",
-    HOUSE_EVENTS = "house_events",
-    FUNCTIONAL_EVENT = "functional_event",
-    PATHS = "paths",
-    BRANCHES = "branches",
-    FUNCTIONAL_EVENTS = "functional_events",
-    INITIAL_STATE = "initial_state",
-    SEQUENCES = "sequences",
-    BAYESIAN_NODES = "bayesian_nodes",
-    STATES = "states"
+interface Expression {
+    _proxy: string;
+}
+
+interface Label {
+    name: string,
+    description: string,
+    frequency? : string
   }
 
-export enum ProxyTypes {
-    COLLECT_FORMULA = "CollectFormula",
-    COLLECT_EXPRESSION = "CollectExpression",
-    EVENT_REFERENCE = "EventReference",
-    LOGICAL_EXPRESSION = "LogicalExpression",
-    FLOAT = "Float",
-    STRING_DISTRIBUTION = "StringDistribution",
-    EXPONENTIAL_DISTRIBUTION = "ExponentialDistribution",
-    LOG_NORMAL_DISTRIBUTION = "LognormalDistribution",
-    WEIBULL_DISTRIBUTION = "WeibullDistribution",
-    NORMAL_DISTRIBUTION = "NormalDistribution",
-    UNIFORM_DISTRIBUTION = "UniformDistribution",
-    NON_PARAMETRIC_DISTRIBUTION = "NonParametricDistribution",
-    FORK = "Fork",
-    END_STATE = "EndState",
-    BBN_LINK_EXPRESSION = "BBNLinkExpression",
-    PARTS_FIT_EXPRESSION = "PartsFITExpression",
-    DISTRIBUTION = "Distribution"
-  }
-  
-  export enum ROLE_CHOICES {
-    PUBLIC = "public",
-    PRIVATE = "private",
-  }
-  
-  export enum GateTypes {
-    AND = "and",
-    AT_LEAST = "atleast",
-    CARDINALITY = "cardinality",
-    IFF = "iff",
-    IMPLY = "imply",
-    NAND = "nand",
-    NOR = "nor",
-    NOT = "not",
-    OR = "or",
-    XOR = "xor"
-  }
+interface Position {
+    x?: number,
+    y?: number,
+    width?: number,
+    height?: number
+}
 
-  export interface Label {
-    name: string;
-    description: string;
-    frequency? : string;
-  }
+interface Style {
+    position: Position
+}
 
-  export interface Position {
-    x?: number;
-    y?: number;
-    width?: number;
-    height?: number;
-  }
+interface Constant {
+    value: boolean
+}
 
-  export interface OutcomeJSON {
-    name?: string;
-    reference_type?: ReferenceTypes;
-    tree_id?: number;
-    path?: string;
-    make_instance?: boolean;
-    _proxy?: ProxyTypes;
-  }
-  
-  export interface FormulaJSON {
-    _proxy: ProxyTypes;
-    outcome?: OutcomeJSON;
-    expr?: GateTypes;
-    formulas?: OutcomeJSON[];
-    min_value?: number;
-  }
-  
-  export interface FaultTreeMxGraphJSON {
-    [ReferenceTypes.BASIC_EVENTS]: {[index: string]:
-    {
-      expression: 
-      { 
-        _proxy: ProxyTypes;
-      };
-      source_type: string;
-      label: Label;
-      style?: 
-      { 
-        position?: Position;
-      };
-      role?: ROLE_CHOICES;
-    }};
-    [ReferenceTypes.HOUSE_EVENTS]: {[index: string]:
-    {
-      constant: 
-      {
-        value: boolean;
-      };
-      label: Label;
-      style?: 
-      { 
-        position?: Position;
-      };
-      role?: ROLE_CHOICES;
-    }};
-    [ReferenceTypes.GATES]: {[index: string]:
-    {
-      formula: FormulaJSON | OutcomeJSON;
-      label: Label;
-      style?: 
-      { 
-        position?: Position;
-      };
-      role?: ROLE_CHOICES;
-    }};
-    components: {[index: string]: any};
-    top_node: {
-      name?: string;
-      reference_type?: ReferenceTypes;
-      tree_id?: number;
-      path?: string;
-      make_instance?: boolean;
-      _proxy?: ProxyTypes;
-    };
-    name: string;
+interface Outcome {
+    name?: string,
+    reference_type?: string,
+    tree_id?: number,
+    path?: string,
+    make_instance?: boolean,
+    _proxy?: string,
+}
+
+interface Formula {
+    _proxy: string,
+    outcome?: Outcome,
+    expr?: string,
+    formulas?: Outcome[],
+    min_value?: number
+}
+
+interface Basic_Event {
+    expression: Expression,
+    source_type: string,
+    label: Label,
+    style?: Style,
+    role?: string
+}
+
+interface House_Event {
+    constant: Constant,
+    label: Label,
+    style?: Style,
+    role?: string
+}
+
+interface Gate {
+    formula: Formula | Outcome,
+    label: Label,
+    style?: Style,
+    role?: string
+}
+
+interface Component {
+    [index: string]: any;
+}
+
+interface Top_Node {
+    name?: string,
+    reference_type?: string,
+    tree_id?: number,
+    path?: string,
+    make_instance?: boolean,
+    _proxy?: string
+}
+
+export interface FaultTreeJSON {
+    basic_events: {[index: string]: Basic_Event};
+    house_events: {[index: string]: House_Event};
+    gates: {[index: string]: Gate};
+    components: {[index: string]: Component};
+    top_node: Top_Node;
+    name: string
     model_tree_id: number;
-    label: {
-      name: string;
-      description: string;
-      frequency? : string;
-    };
-  }
+    label: Label;
+}
