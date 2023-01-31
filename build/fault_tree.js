@@ -52,3 +52,14 @@ var GATE_TYPES;
     GATE_TYPES["OR"] = "or";
     GATE_TYPES["XOR"] = "xor";
 })(GATE_TYPES || (GATE_TYPES = {}));
+var NORMAL_PARAMS;
+(function (NORMAL_PARAMS) {
+    NORMAL_PARAMS["MeanStd"] = "mean & std";
+    NORMAL_PARAMS["MedianErrorFactor"] = "median & error factor";
+    NORMAL_PARAMS["Percentiles"] = "percentiles";
+})(NORMAL_PARAMS || (NORMAL_PARAMS = {}));
+var DISTRIBUTION_TIME_DEPENDENCE;
+(function (DISTRIBUTION_TIME_DEPENDENCE) {
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_INDEPENDENT"] = "On Demand";
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_DEPENDENT"] = "During Operation";
+})(DISTRIBUTION_TIME_DEPENDENCE || (DISTRIBUTION_TIME_DEPENDENCE = {}));

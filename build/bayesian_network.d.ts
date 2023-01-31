@@ -2,6 +2,7 @@ declare enum ROLE_CHOICES {
     PUBLIC = "public",
     PRIVATE = "private"
 }
+
 declare enum REFERENCE_TYPES {
     GATES = "gates",
     BASIC_EVENTS = "basic_events",
@@ -15,6 +16,7 @@ declare enum REFERENCE_TYPES {
     BAYESIAN_NODES = "bayesian_nodes",
     STATES = "states"
 }
+
 declare enum PROXY_TYPES {
     COLLECT_FORMULA = "CollectFormula",
     COLLECT_EXPRESSION = "CollectExpression",
@@ -34,6 +36,7 @@ declare enum PROXY_TYPES {
     PARTS_FIT_EXPRESSION = "PartsFITExpression",
     DISTRIBUTION = "Distribution"
 }
+
 declare enum GATE_TYPES {
     AND = "and",
     AT_LEAST = "atleast",
@@ -46,21 +49,25 @@ declare enum GATE_TYPES {
     OR = "or",
     XOR = "xor"
 }
+
 declare enum DISTRIBUTION_TIME_DEPENDENCE {
     TIME_INDEPENDENT = "On Demand",
     TIME_DEPENDENT = "During Operation"
 }
+
 declare enum NORMAL_PARAMS {
     MeanStd = "mean & std",
     MedianErrorFactor = "median & error factor",
     Percentiles = "percentiles"
 }
+
 interface Position {
     x?: number;
     y?: number;
     width?: number;
     height?: number;
 }
+
 interface Outcome {
     name?: string;
     reference_type?: REFERENCE_TYPES;
@@ -69,6 +76,7 @@ interface Outcome {
     make_instance?: boolean;
     _proxy?: PROXY_TYPES;
 }
+
 interface Expression {
     _proxy: PROXY_TYPES;
     value?: number;
@@ -112,34 +120,36 @@ interface Expression {
     time_to_failure?: number[];
     estimated_reliability?: number[];
 }
+
 interface BayesianStateProbability {
     expression: Expression;
     states?: Outcome[];
 }
+
 interface Label {
     name: string;
     description: string;
     frequency?: string;
 }
+
 interface BayesianNodeState {
     probabilities: BayesianStateProbability[];
     label: Label;
 }
+
 interface BayesianNode {
     states: Record<string, BayesianNodeState>;
     dependencies?: Outcome[];
-    style?: {
-        position?: Position;
-    };
+    style?: {position?: Position};
     role?: ROLE_CHOICES;
     label: Label;
 }
+
 export interface BayesianNetworkJSON {
-    bayesian_nodes: {
-        [key: string]: BayesianNode;
-    };
+    bayesian_nodes: {[key: string]: BayesianNode};
     name: string;
     model_tree_id: number;
     label: Label;
 }
+
 export {};

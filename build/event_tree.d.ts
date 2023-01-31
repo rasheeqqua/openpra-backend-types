@@ -11,6 +11,7 @@ declare enum REFERENCE_TYPES {
     BAYESIAN_NODES = "bayesian_nodes",
     STATES = "states"
 }
+
 declare enum PROXY_TYPES {
     COLLECT_FORMULA = "CollectFormula",
     COLLECT_EXPRESSION = "CollectExpression",
@@ -30,6 +31,7 @@ declare enum PROXY_TYPES {
     PARTS_FIT_EXPRESSION = "PartsFITExpression",
     DISTRIBUTION = "Distribution"
 }
+
 declare enum GATE_TYPES {
     AND = "and",
     AT_LEAST = "atleast",
@@ -42,19 +44,23 @@ declare enum GATE_TYPES {
     OR = "or",
     XOR = "xor"
 }
+
 declare enum DISTRIBUTION_TIME_DEPENDENCE {
     TIME_INDEPENDENT = "On Demand",
     TIME_DEPENDENT = "During Operation"
 }
+
 declare enum NORMAL_PARAMS {
     MeanStd = "mean & std",
     MedianErrorFactor = "median & error factor",
     Percentiles = "percentiles"
 }
+
 declare enum ROLE_CHOICES {
     PUBLIC = "public",
     PRIVATE = "private"
 }
+
 interface Outcome {
     name?: string;
     reference_type?: REFERENCE_TYPES;
@@ -63,6 +69,7 @@ interface Outcome {
     make_instance?: boolean;
     _proxy?: PROXY_TYPES;
 }
+
 interface Formula {
     _proxy: PROXY_TYPES;
     outcome?: Outcome;
@@ -70,6 +77,7 @@ interface Formula {
     formulas?: Outcome[];
     min_value?: number;
 }
+
 interface Expression {
     _proxy: PROXY_TYPES;
     value?: number;
@@ -113,26 +121,31 @@ interface Expression {
     time_to_failure?: number[];
     estimated_reliability?: number[];
 }
+
 interface Position {
     x?: number;
     y?: number;
     width?: number;
     height?: number;
 }
+
 interface Label {
     name: string;
     description: string;
     frequency?: string;
 }
+
 interface Instruction {
     formula?: Formula | Outcome;
     expression?: Expression;
     _proxy: PROXY_TYPES;
 }
+
 interface Path {
     outcome?: Outcome;
     instructions?: Instruction[];
 }
+
 interface Branch {
     functional_event: string;
     paths: {
@@ -141,36 +154,28 @@ interface Branch {
     };
     _proxy: PROXY_TYPES;
 }
+
 interface HCLTree_Vertex {
-    style?: {
-        position?: Position;
-    };
+    style?: {position?: Position};
     role?: ROLE_CHOICES;
     label: Label;
 }
+
 interface Initial_State_Vertex {
     outcome?: Outcome;
-    style?: {
-        position?: Position;
-    };
+    style?: {position?: Position};
     role?: ROLE_CHOICES;
     label: Label;
 }
+
 export interface EventTreeJSON {
-    branches: {
-        [index: string]: {
-            outcome: Branch;
-        };
-    };
-    functional_events: {
-        [index: string]: HCLTree_Vertex;
-    };
+    branches: {[index: string]: {outcome: Branch}};
+    functional_events: {[index: string]: HCLTree_Vertex};
     initial_state: Initial_State_Vertex;
-    sequences: {
-        [index: string]: HCLTree_Vertex;
-    };
+    sequences: {[index: string]: HCLTree_Vertex};
     name: string;
     model_tree_id: number;
     label: Label;
 }
+
 export {};

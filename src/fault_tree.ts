@@ -50,15 +50,78 @@ enum GATE_TYPES {
     XOR = "xor"
 }
 
+enum NORMAL_PARAMS {
+    MeanStd = "mean & std",
+    MedianErrorFactor = "median & error factor",
+    Percentiles = "percentiles"
+}
+
+enum DISTRIBUTION_TIME_DEPENDENCE {
+    TIME_INDEPENDENT = "On Demand",
+    TIME_DEPENDENT = "During Operation",
+}
+
 interface Expression {
-    _proxy: string;
+    _proxy: PROXY_TYPES;
+  
+    value?: number;
+  
+    user_expression?: string;
+  
+    test_interval?: number;
+    failure_rate?: number;
+  
+    mean?: number;
+    std?: number;
+    median?: number;
+    error_factor?: number;
+    p5?: number;
+    p95?: number;
+
+    _params?: ['mean', 'std'] | ['median', 'error_factor'] | ['p5', 'p95'];
+  
+    shape?: number;
+    scale?: number;
+
+    normal_mean?: number;
+    normal_std?: number;
+    normal_median?: number;
+    normal_error_factor?: number;
+    normal_p5?: number;
+    normal_p95?: number;
+    normal_params?: NORMAL_PARAMS;
+    log_normal_mean?: number;
+    log_normal_std?: number;
+    log_normal_median?: number;
+    log_normal_error_factor?: number;
+    log_normal_p5?: number;
+    log_normal_p95?: number;
+    log_normal_params?: NORMAL_PARAMS;
+    exponential_test_interval?: number;
+    weibull_test_interval?: number;
+    parts_fit_test_interval?: number;
+    distribution_time_dependence?: DISTRIBUTION_TIME_DEPENDENCE;
+  
+    max?: number;
+    min?: number;
+
+    state_ref?: Outcome;
+    uncertain?: boolean;
+
+    part_id?: number;
+  
+    formulas?: Expression[];
+    expr?: GATE_TYPES;
+  
+    time_to_failure?: number[];
+    estimated_reliability?: number[];
 }
 
 interface Label {
     name: string;
     description: string;
     frequency? : string;
-  }
+}
 
 interface Position {
     x?: number;
