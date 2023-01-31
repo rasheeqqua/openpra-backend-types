@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeTypes = void 0;
-var TreeTypes;
-(function (TreeTypes) {
-    TreeTypes["EVENT_TREE"] = "e";
-    TreeTypes["EVENT_SEQUENCE_DIAGRAM"] = "e";
-    TreeTypes["FAULT_TREE"] = "f";
-    TreeTypes["BAYESIAN_NETWORK"] = "b";
-    TreeTypes["MANAGEMENT_FAULT_TREE"] = "m";
-    TreeTypes["INITIATING_EVENT"] = "i";
-})(TreeTypes = exports.TreeTypes || (exports.TreeTypes = {}));
+var TREE_TYPES;
+(function (TREE_TYPES) {
+    TREE_TYPES["EVENT_TREE"] = "e";
+    TREE_TYPES["EVENT_SEQUENCE_DIAGRAM"] = "e";
+    TREE_TYPES["FAULT_TREE"] = "f";
+    TREE_TYPES["BAYESIAN_NETWORK"] = "b";
+    TREE_TYPES["MANAGEMENT_FAULT_TREE"] = "m";
+    TREE_TYPES["INITIATING_EVENT"] = "i";
+})(TREE_TYPES || (TREE_TYPES = {}));

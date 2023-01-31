@@ -1,10 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ROLE_CHOICES;
-(function (ROLE_CHOICES) {
-    ROLE_CHOICES["PUBLIC"] = "public";
-    ROLE_CHOICES["PRIVATE"] = "private";
-})(ROLE_CHOICES || (ROLE_CHOICES = {}));
 var REFERENCE_TYPES;
 (function (REFERENCE_TYPES) {
     REFERENCE_TYPES["GATES"] = "gates";
@@ -52,3 +47,19 @@ var GATE_TYPES;
     GATE_TYPES["OR"] = "or";
     GATE_TYPES["XOR"] = "xor";
 })(GATE_TYPES || (GATE_TYPES = {}));
+var DISTRIBUTION_TIME_DEPENDENCE;
+(function (DISTRIBUTION_TIME_DEPENDENCE) {
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_INDEPENDENT"] = "On Demand";
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_DEPENDENT"] = "During Operation";
+})(DISTRIBUTION_TIME_DEPENDENCE || (DISTRIBUTION_TIME_DEPENDENCE = {}));
+var NORMAL_PARAMS;
+(function (NORMAL_PARAMS) {
+    NORMAL_PARAMS["MeanStd"] = "mean & std";
+    NORMAL_PARAMS["MedianErrorFactor"] = "median & error factor";
+    NORMAL_PARAMS["Percentiles"] = "percentiles";
+})(NORMAL_PARAMS || (NORMAL_PARAMS = {}));
+var ROLE_CHOICES;
+(function (ROLE_CHOICES) {
+    ROLE_CHOICES["PUBLIC"] = "public";
+    ROLE_CHOICES["PRIVATE"] = "private";
+})(ROLE_CHOICES || (ROLE_CHOICES = {}));

@@ -37,7 +37,7 @@ var PROXY_TYPES;
     PROXY_TYPES["END_STATE"] = "EndState";
     PROXY_TYPES["BBN_LINK_EXPRESSION"] = "BBNLinkExpression";
     PROXY_TYPES["PARTS_FIT_EXPRESSION"] = "PartsFITExpression";
-    PROXY_TYPES["DISTRIBUTION"] = "Distribution";
+    PROXY_TYPES["DISTRIBUTION"] = "Distribution"; // This field does not actually exist. Front end development purpose only.
 })(PROXY_TYPES || (PROXY_TYPES = {}));
 var GATE_TYPES;
 (function (GATE_TYPES) {
@@ -52,3 +52,14 @@ var GATE_TYPES;
     GATE_TYPES["OR"] = "or";
     GATE_TYPES["XOR"] = "xor";
 })(GATE_TYPES || (GATE_TYPES = {}));
+var DISTRIBUTION_TIME_DEPENDENCE;
+(function (DISTRIBUTION_TIME_DEPENDENCE) {
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_INDEPENDENT"] = "On Demand";
+    DISTRIBUTION_TIME_DEPENDENCE["TIME_DEPENDENT"] = "During Operation";
+})(DISTRIBUTION_TIME_DEPENDENCE || (DISTRIBUTION_TIME_DEPENDENCE = {}));
+var NORMAL_PARAMS;
+(function (NORMAL_PARAMS) {
+    NORMAL_PARAMS["MeanStd"] = "mean & std";
+    NORMAL_PARAMS["MedianErrorFactor"] = "median & error factor";
+    NORMAL_PARAMS["Percentiles"] = "percentiles";
+})(NORMAL_PARAMS || (NORMAL_PARAMS = {}));

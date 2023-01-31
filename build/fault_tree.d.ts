@@ -1,4 +1,8 @@
-export declare enum ReferenceTypes {
+declare enum ROLE_CHOICES {
+    PUBLIC = "public",
+    PRIVATE = "private"
+}
+declare enum REFERENCE_TYPES {
     GATES = "gates",
     BASIC_EVENTS = "basic_events",
     HOUSE_EVENTS = "house_events",
@@ -11,7 +15,7 @@ export declare enum ReferenceTypes {
     BAYESIAN_NODES = "bayesian_nodes",
     STATES = "states"
 }
-export declare enum ProxyTypes {
+declare enum PROXY_TYPES {
     COLLECT_FORMULA = "CollectFormula",
     COLLECT_EXPRESSION = "CollectExpression",
     EVENT_REFERENCE = "EventReference",
@@ -30,11 +34,7 @@ export declare enum ProxyTypes {
     PARTS_FIT_EXPRESSION = "PartsFITExpression",
     DISTRIBUTION = "Distribution"
 }
-export declare enum ROLE_CHOICES {
-    PUBLIC = "public",
-    PRIVATE = "private"
-}
-export declare enum GateTypes {
+declare enum GATE_TYPES {
     AND = "and",
     AT_LEAST = "atleast",
     CARDINALITY = "cardinality",
@@ -46,84 +46,84 @@ export declare enum GateTypes {
     OR = "or",
     XOR = "xor"
 }
-export interface Label {
+interface Expression {
+    _proxy: string;
+}
+interface Label {
     name: string;
     description: string;
     frequency?: string;
 }
-export interface Position {
+interface Position {
     x?: number;
     y?: number;
     width?: number;
     height?: number;
 }
-export interface OutcomeJSON {
+interface Style {
+    position?: Position;
+}
+interface Constant {
+    value: boolean;
+}
+interface Outcome {
     name?: string;
-    reference_type?: ReferenceTypes;
+    reference_type?: REFERENCE_TYPES;
     tree_id?: number;
     path?: string;
     make_instance?: boolean;
-    _proxy?: ProxyTypes;
+    _proxy?: PROXY_TYPES;
 }
-export interface FormulaJSON {
-    _proxy: ProxyTypes;
-    outcome?: OutcomeJSON;
-    expr?: GateTypes;
-    formulas?: OutcomeJSON[];
+interface Formula {
+    _proxy: PROXY_TYPES;
+    outcome?: Outcome;
+    expr?: GATE_TYPES;
+    formulas?: Outcome[];
     min_value?: number;
 }
-export interface FaultTreeMxGraphJSON {
-    [ReferenceTypes.BASIC_EVENTS]: {
-        [index: string]: {
-            expression: {
-                _proxy: ProxyTypes;
-            };
-            source_type: string;
-            label: Label;
-            style?: {
-                position?: Position;
-            };
-            role?: ROLE_CHOICES;
-        };
+interface Basic_Event {
+    expression: Expression;
+    source_type: string;
+    label: Label;
+    style?: Style;
+    role?: ROLE_CHOICES;
+}
+interface House_Event {
+    constant: Constant;
+    label: Label;
+    style?: Style;
+    role?: ROLE_CHOICES;
+}
+interface Gate {
+    formula: Formula | Outcome;
+    label: Label;
+    style?: Style;
+    role?: ROLE_CHOICES;
+}
+interface Top_Node {
+    name?: string;
+    reference_type?: REFERENCE_TYPES;
+    tree_id?: number;
+    path?: string;
+    make_instance?: boolean;
+    _proxy?: PROXY_TYPES;
+}
+export interface FaultTreeJSON {
+    basic_events: {
+        [index: string]: Basic_Event;
     };
-    [ReferenceTypes.HOUSE_EVENTS]: {
-        [index: string]: {
-            constant: {
-                value: boolean;
-            };
-            label: Label;
-            style?: {
-                position?: Position;
-            };
-            role?: ROLE_CHOICES;
-        };
+    house_events: {
+        [index: string]: House_Event;
     };
-    [ReferenceTypes.GATES]: {
-        [index: string]: {
-            formula: FormulaJSON | OutcomeJSON;
-            label: Label;
-            style?: {
-                position?: Position;
-            };
-            role?: ROLE_CHOICES;
-        };
+    gates: {
+        [index: string]: Gate;
     };
     components: {
         [index: string]: any;
     };
-    top_node: {
-        name?: string;
-        reference_type?: ReferenceTypes;
-        tree_id?: number;
-        path?: string;
-        make_instance?: boolean;
-        _proxy?: ProxyTypes;
-    };
+    top_node: Top_Node;
     name: string;
     model_tree_id: number;
-    label: {
-        name: string;
-        description: string;
-        frequency?: string;
-    };
+    label: Label;
 }
+export {};
